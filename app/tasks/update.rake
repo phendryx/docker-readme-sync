@@ -6,6 +6,14 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
   github_repo = args[:github_repo]
   dockerhub_repo = args[:dockerhub_repo]
 
+  unless ENV["GITHUB_REPO"].nil? || ENV["GITHUB_REPO"].empty?
+    github_repo = ENV["GITHUB_REPO"]
+  end
+
+  unless ENV["DOCKERHUB_REPO"].nil? || ENV["DOCKERHUB_REPO"].empty?
+    dockerhub_repo = ENV["DOCKERHUB_REPO"]
+  end
+
   gh = Github.new
   unless gh.repo_exists?(github_repo)
     puts "Github Repo Not Found"
