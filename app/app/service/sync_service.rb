@@ -3,10 +3,6 @@ require 'yaml'
 class SyncService
 
   def self.update(github_repo, dockerhub_repo)
-    ENV.keys.each do |key|
-      puts "#{key}: #{ENV[key]}"
-    end
-
     if ENV['USE_ENV_CREDENTIALS'] == "true"
       if ENV['DOCKERHUB_USERNAME'].nil? || ENV['DOCKERHUB_USERNAME'].empty? ||
         ENV['DOCKERHUB_PASSWORD'].nil? || ENV['DOCKERHUB_PASSWORD'].empty?
@@ -14,7 +10,7 @@ class SyncService
       end
 
       username = ENV['DOCKERHUB_USERNAME']
-      username = ENV['DOCKERHUB_PASSWORD']
+      password = ENV['DOCKERHUB_PASSWORD']
     else
       config_file = File.expand_path("../../../config", __FILE__) + "/settings.yml"
       settings = YAML.load_file(config_file)
