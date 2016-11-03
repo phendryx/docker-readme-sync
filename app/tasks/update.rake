@@ -5,6 +5,7 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
 
   github_repo = args[:github_repo]
   dockerhub_repo = args[:dockerhub_repo]
+  puts ENV.keys
 
   unless ENV["GITHUB_REPO"].nil? || ENV["GITHUB_REPO"].empty?
     github_repo = ENV["GITHUB_REPO"]
