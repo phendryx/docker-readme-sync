@@ -9,12 +9,12 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
     puts "#{key}: #{ENV[key]}"
   end
 
-  unless ENV["GITHUB_REPO"].nil? || ENV["GITHUB_REPO"].empty?
-    github_repo = ENV["GITHUB_REPO"]
+  unless ENV["GIT_REPOSITORY"].nil? || ENV["GIT_REPOSITORY"].empty?
+    github_repo = ENV["GIT_REPOSITORY"]
   end
 
-  unless ENV["DOCKERHUB_REPO"].nil? || ENV["DOCKERHUB_REPO"].empty?
-    dockerhub_repo = ENV["DOCKERHUB_REPO"]
+  unless ENV["DOCKER_REPOSITORY"].nil? || ENV["DOCKER_REPOSITORY"].empty?
+    dockerhub_repo = ENV["DOCKER_REPOSITORY"]
   end
 
   puts "github_repo=#{github_repo}"
