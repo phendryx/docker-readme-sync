@@ -31,7 +31,8 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
   # phantomjs alive?
   cmd = "rake phantomjs_shell[#{github_repo},#{dockerhub_repo}]  2>&1"
   output = `#{cmd}`
-
+  puts output
+  
   if output.include?("Login Failed")
     puts "Dockerhub login failed."
     exit 1
