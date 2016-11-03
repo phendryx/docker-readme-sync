@@ -14,6 +14,9 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
     dockerhub_repo = ENV["DOCKERHUB_REPO"]
   end
 
+  puts "github_repo=#{github_repo}"
+  puts "dockerhub_repo=#{dockerhub_repo}"
+
   gh = Github.new
   unless gh.repo_exists?(github_repo)
     puts "Github Repo Not Found"

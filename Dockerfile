@@ -22,9 +22,6 @@ ARG BUILD_PACKAGES="\
     ruby-full \
     zlib1g-dev"
 
-# copy app
-COPY app/ /opt/docker-readme-sync/
-
 # install runtime packages
 RUN \
  apt-get update && \
@@ -46,6 +43,9 @@ RUN \
 # as of 2016-10-08, does not work headless, which defeats the purpose of phantomjs.
  npm -g install \
     phantomjs-prebuilt && \
+
+# copy app
+COPY app/ /opt/docker-readme-sync/
 
 # install ruby app gems
  cd /opt/docker-readme-sync/ && \
