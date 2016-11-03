@@ -2,13 +2,6 @@ require "./app"
 
 desc "Updata a Dockerhub repo's full descrption"
 task :update, [:github_repo, :dockerhub_repo] do |t, args|
-
-  github_repo = args[:github_repo]
-  dockerhub_repo = args[:dockerhub_repo]
-  ENV.keys.each do |key|
-    puts "#{key}: #{ENV[key]}"
-  end
-
   unless ENV["GIT_REPOSITORY"].nil? || ENV["GIT_REPOSITORY"].empty?
     github_repo = ENV["GIT_REPOSITORY"]
   end
@@ -16,9 +9,6 @@ task :update, [:github_repo, :dockerhub_repo] do |t, args|
   unless ENV["DOCKER_REPOSITORY"].nil? || ENV["DOCKER_REPOSITORY"].empty?
     dockerhub_repo = ENV["DOCKER_REPOSITORY"]
   end
-
-  puts "github_repo=#{github_repo}"
-  puts "dockerhub_repo=#{dockerhub_repo}"
 
   gh = Github.new
   unless gh.repo_exists?(github_repo)
